@@ -1,0 +1,98 @@
+{
+  "drawer": {
+    "slogan": "A new way to know the world",
+    "no-data": "Not Found Any Link",
+    "search": "Search"
+  },
+  "top-nav-bar": {
+    "edition": "Edition",
+    "get-newsletter": "Get Newsletter",
+    "sign-up-as-reader": "Sign up as reader",
+    "sign-in": "Sign In",
+    "search": "Search",
+    "company-slogan": "Academic rigour, journalistic flair"
+  },
+  "landing-page": {
+    "no-data": "No News Found!",
+    "news-loading": "Loading News..."
+  },
+  "auth-screen": {
+    "header-log-in": "Sign in to The BD-Feature",
+    "header-sign-up": "Sign up to The BD-Feature",
+    "dont-have-account": "Don't have an account yet?",
+    "already-have-account": "Already have an account?",
+    "sign-in-with-x": "Sign in with X (Formerly Twitter)",
+    "sign-in-with-fb": "Sign in with Facebook",
+    "sign-in-with-gg": "Sign in with Google",
+    "sign-in-with-in": "Sign in with LinkedIn",
+    "or": "OR",
+    "email": "Email",
+    "email-placeholder": "Enter email",
+    "password": "password",
+    "password-placeholder": "Enter password",
+    "full-name": "Full Name",
+    "full-name-placeholder": "First & Last Name , no pseudonym",
+    "job-title": "Job Title",
+    "job-title-placeholder": "e.g. Product Manager",
+    "sign-in": "Sign in",
+    "checkbox-text": "By checking this box, I agree to The BD-Feature",
+    "terms-and-conditions": "Terms and Conditions",
+    "sign-up": "Agree & Create Account",
+    "bottom-text": "We welcome debate and dissent, but personal attacks (on authors, other users or any individual), abuse and defamatory language will not be tolerated. Nor will we tolerate attempts to deliberately disrupt discussions. We aim to maintain The Conversation as an inviting space to focus on intelligent discussions. Please be courteous.",
+    "read-community-standards": "Read our community standards"
+  },
+  "user-confirm-screen": {
+    "loading-text": "Checking Infoo..."
+  },
+  "done-screen": {
+    "heading-text": "Thanks for signing up",
+    "section-one": {
+      "title": "Next, Check your email",
+      "description": "We’ve sent you instructions to activate your account. If it doesn’t arrive in an hour, please check your spam or junk mail folder. If it’s still not there, please email"
+    },
+    "section-two": {
+      "title": "Subscribe our free newsletter",
+      "description": "Our free newsletters bring the latest analysis and commentary directly from the brightest academic authors to your inbox each morning.",
+      "button-text": "Subscribe"
+    }
+  },
+  "newsletter-screen": {
+    "header": "Subscribe to our newsletter",
+    "email": "Email",
+    "email-placeholder": "Enter your email",
+    "input-bottom-text": "Please enter a valid email address",
+    "subscribe": "Subscribe"
+  },
+  "newletter-confirm-screen": {
+    "thank-you": "Thank You",
+    "text-one": "You’re now signed up for this newsletter and will start receiving it soon.",
+    "title-one": "To ensure you see our emails:",
+    "text-two": "If you don’t see a welcome message in your inbox shortly, please check your spam folder or “Promotions” tab. If it’s there, you can move it to your main inbox, or mark it “not spam”.",
+    "title-two": "Why The BD-Feature is special",
+    "item-one": "We publish trustworthy, fact-based articles written by academic experts",
+    "item-two": "We are free from the influence of advertisers, politics, big business and billionaire owners. As a nonprofit organization, our only motivation is to ensure reliable information reaches as broad an audience as possible",
+    "item-three": "We are committed to accuracy. We carefully vet the experts who write for us. When we make mistakes, we promptly correct them Who We Are"
+  },
+  "post-detail-screen": {
+    "before-you-go": "Before You GO...",
+    "description": "Our free newsletters bring the latest analysis and commentary directly from the brightest academic authors to your inbox each morning.",
+    "get-newsletter": "Get Newsletter"
+  },
+  "footer": {
+    "who-we-are": "Who We Are",
+    "our-charter": "Our Charter",
+    "our-team": "Our Team",
+    "contact-us": "Contact Us",
+    "partner-founder": "Partner & Founder",
+    "resrouce-for-media": "Resource For Media",
+    "editorial-policies": "Editorial Policies",
+    "community-standards": "Community Standards",
+    "republishing-guidelines": "Republishing Guidelines",
+    "analytics": "Analytics",
+    "our-feeds": "Our Feeds",
+    "get-newsletter": "Get Newsletter",
+    "privacy-policy": "Privacy Policy",
+    "terms-conditions": "Terms & Conditions",
+    "copyright": "Copyright © 2010–2024, The Bd-Feature Media Group Ltd"
+  }
+}
