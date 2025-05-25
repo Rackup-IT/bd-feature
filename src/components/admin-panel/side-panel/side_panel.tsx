@@ -3,6 +3,7 @@ import clsx from "clsx";
 
 import { BiSolidAddToQueue } from "react-icons/bi";
 import { FaList } from "react-icons/fa6";
+import { MdManageAccounts } from "react-icons/md";
 import { PiNewspaperFill } from "react-icons/pi";
 import { RiHome5Fill } from "react-icons/ri";
 import { useAppDispatch, useAppSelector } from "../../../store/hooks";
@@ -81,6 +82,21 @@ const AdminSidePanel: React.FC<AdminSidePanelProps> = (props) => {
                 selectedTab === SidePanelButtons.NAVIGATIONS,
               "fill-slate-400 dark:fill-slate-700":
                 selectedTab !== SidePanelButtons.NAVIGATIONS,
+            })}
+          />
+        </div>
+      </button>
+      <button
+        onClick={() => onButtonClick(SidePanelButtons.ACCOUNT)}
+        className="w-14 h-full min-[500px]:h-fit flex flex-row justify-center items-center min-[500px]:py-4"
+      >
+        <div className="size-6 ">
+          <MdManageAccounts
+            className={clsx("size-full transition-300", {
+              "fill-primary-default dark:fill-primary-default":
+                selectedTab === SidePanelButtons.ACCOUNT,
+              "fill-slate-400 dark:fill-slate-700":
+                selectedTab !== SidePanelButtons.ACCOUNT,
             })}
           />
         </div>

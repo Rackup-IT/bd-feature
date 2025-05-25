@@ -1,10 +1,13 @@
 import clsx from "clsx";
 import Image from "next/image";
 import { SetStateAction, useEffect, useState } from "react";
-import PostModel from "../../../interfaces/post";
 
 import LoadingSpinner from "@/components/loading-spinner/loading_spinner";
+import { MdOutlineEdit } from "react-icons/md";
 import useHttpRequest from "../../../hooks/api/useApiRequest";
+import PostModel from "../../../interfaces/post";
+import { useAppDispatch } from "../../../store/hooks";
+import { SidePanelButtons, setIsEditPost } from "../../../store/slices/admin";
 
 interface ManagePostsProps {}
 
@@ -107,6 +110,7 @@ const PostCard = ({
   index: number;
 }) => {
   const { sendRequest } = useHttpRequest();
+  const dispatch = useAppDispatch();
 
   const handleDeletePost = async () => {
     let deletedPost: PostModel = post;
@@ -142,12 +146,30 @@ const PostCard = ({
             Published By : {post.publisherName}
           </p>
         </div>
-        <button
-          onClick={() => handleDeletePost()}
-          className="bg-red-400 dark:bg-red-700 mt-3 py-1 rounded-md font-medium"
-        >
-          Delete
-        </button>
+        <div className="flex flex-row justify-around">
+          <button
+            onClick={() => handleDeletePost()}
+            className="bg-red-400 dark:bg-red-700 mt-3 py-1 px-5 rounded-md font-medium"
+          >
+            Delete
+          </button>
+          <button
+            onClick={() => {
+              dispatch(
+                setIsEditPost({
+                  selectedTab: SidePanelButtons.ADD,
+                  isEditPost: true,
+                  post: post,
+                })
+              );
+              console.log("calling");
+            }}
+            className="bg-red-400 dark:bg-red-700 mt-3 py-1 rounded-md font-medium flex flex-row items-center px-3"
+          >
+            <MdOutlineEdit />
+            Edit
+          </button>
+        </div>
       </div>
     </li>
   );

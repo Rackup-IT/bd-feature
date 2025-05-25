@@ -6,8 +6,11 @@ import { useAppSelector } from "../../../store/hooks";
 
 import LoadingSpinner from "@/components/loading-spinner/loading_spinner";
 import { useEffect, useState } from "react";
+import useHttpReq, { LoadingMode } from "../../../hooks/api/useApiReq";
+import AdminModel from "../../../interfaces/admin";
 import { SidePanelButtons } from "../../../store/slices/admin";
 import CreatePost from "../create-post/create_post";
+import EditProfile from "../edit-profile/edit_profile";
 import Home from "../home/home";
 import ManageNavigations from "../manage-navigations/manage_navigations";
 import ManagePosts from "../manage-posts/manage_posts";
@@ -15,6 +18,11 @@ import ManagePosts from "../manage-posts/manage_posts";
 interface DashboardScreenProps {}
 
 const DashboardScreen: React.FC<DashboardScreenProps> = (props) => {
+  const {
+    sendRequest: getAuthorData,
+    response: author,
+    loading,
+  } = useHttpReq<AdminModel>();
   const selectedTab = useAppSelector((state) => state.admin.selectedTab);
   const router = useRouter();
   const [mount, setMount] = useState(false);
@@ -27,7 +35,22 @@ const DashboardScreen: React.FC<DashboardScreenProps> = (props) => {
     setMount(true);
   }, [router]);
 
-  if (!mount) {
+  useEffect(() => {
+    const adminToken = localStorage.getItem("adminToken");
+    if (!adminToken) {
+      return;
+    }
+
+    const getAuthor = async () => {
+      await getAuthorData(`/api/admin/author?token=${adminToken}`, {
+        method: "GET",
+      });
+    };
+
+    getAuthor();
+  }, [getAuthorData]);
+
+  if (!mount || loading === LoadingMode.OnGoing) {
     return (
       <div className="w-screen h-screen flex flex-col items-center justify-center">
         <LoadingSpinner className="w-9 h-9 fill-primary-default" />
@@ -43,10 +66,15 @@ const DashboardScreen: React.FC<DashboardScreenProps> = (props) => {
       <div className="flex flex-col min-[500px]:flex-row-reverse">
         <div className="mb-16 mx-1 w-full transition-300">
           {selectedTab === SidePanelButtons.HOME && <Home />}
-          {selectedTab === SidePanelButtons.ADD && <CreatePost />}
+          {selectedTab === SidePanelButtons.ADD && (
+            <CreatePost author={author!} />
+          )}
           {selectedTab === SidePanelButtons.POSTS && <ManagePosts />}
           {selectedTab === SidePanelButtons.NAVIGATIONS && (
             <ManageNavigations />
+          )}
+          {selectedTab === SidePanelButtons.ACCOUNT && (
+            <EditProfile author={author!} />
           )}
         </div>
 

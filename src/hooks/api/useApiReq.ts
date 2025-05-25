@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 
 type RequestMethod = "GET" | "POST" | "PUT" | "DELETE" | "PATCH";
 
@@ -31,29 +31,29 @@ const useApiReq = <T>(): ReqResult<T> => {
     LoadingMode.Idle
   );
 
-  const sendRequest = async (
-    url: string,
-    options: RequestOptions
-  ): Promise<T | void> => {
-    setLoading(LoadingMode.OnGoing);
-    setError(null);
-    try {
-      const res = await fetch(url, options);
-      const resResult = await res.json();
+  const sendRequest = useCallback(
+    async (url: string, options: RequestOptions): Promise<T | void> => {
+      setLoading(LoadingMode.OnGoing);
+      setError(null);
+      try {
+        const res = await fetch(url, options);
+        const resResult = await res.json();
 
-      if (!res.ok) {
-        console.log(resResult);
-        throw new Error(resResult.message);
+        if (!res.ok) {
+          console.log(resResult);
+          throw new Error(resResult.message);
+        }
+        setResponse(resResult);
+        return resResult as T;
+      } catch (error) {
+        setError(error as Error);
+        return;
+      } finally {
+        setLoading(LoadingMode.Done);
       }
-      setResponse(resResult);
-      return resResult as T;
-    } catch (error) {
-      setError(error as Error);
-      return;
-    } finally {
-      setLoading(LoadingMode.Done);
-    }
-  };
+    },
+    []
+  );
 
   const setLoadingMode = (mode: keyof typeof LoadingMode) => {
     setLoading(mode);

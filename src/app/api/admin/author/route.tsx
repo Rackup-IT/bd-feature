@@ -40,3 +40,36 @@ export async function GET(req: NextRequest) {
     await client?.close();
   }
 }
+
+export async function PUT(req: NextRequest) {
+  let client;
+  try {
+    const body = await req.json();
+
+    console.log(body);
+
+    const allowedFileds = ["name", "bio", "work", "profilePic"];
+    const updatedData: { [key: string]: string } = {};
+
+    allowedFileds.forEach((field) => {
+      if (body[field] !== undefined) {
+        updatedData[field] = body[field];
+      }
+    });
+
+    client = await connect();
+    const db = client.db();
+
+    await db
+      .collection("admins")
+      .findOneAndUpdate({ _id: new ObjectId(body.id) }, { $set: updatedData });
+  } catch (error) {
+  } finally {
+    await client?.close();
+  }
+
+  return NextResponse.json(
+    { message: "Your profile has been updated!" },
+    { status: 200 }
+  );
+}
